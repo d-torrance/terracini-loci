@@ -37,34 +37,3 @@ terraciniLocus(ZZ, RingMap) := (r, f) -> (
 
 terraciniLocus(ZZ, Ideal) := (r, I) -> (
     terraciniLocus(r, transpose jacobian I, I))
-
-end
-
-restart
-
-loadPackage("TerraciniLoci", Reload => true)
-
-rationalNormalCurve = d -> (
-    s := symbol s;
-    t := symbol t;
-    x := symbol x;
-    R := QQ[s, t];
-    S := QQ[x_0..x_d];
-    map(R, S, apply(d + 1, i -> s^(d - i)*t^i)))
-
-projectedRationalNormalCurve = (d, i) -> (
-    s := symbol s;
-    t := symbol t;
-    x := symbol x;
-    R := QQ[s, t];
-    S := QQ[x_0..x_(d-1)];
-    L := new MutableList from apply(d + 1, j -> s^(d - j) * t^j);
-    remove(L, i);
-    map(R, S, toList L))
-
-errorDepth = 2
-elapsedTime terraciniLocus(3, rationalNormalCurve 9)
-
-
-
-terraciniLocus(3, ker projectedRationalNormalCurve(6, 3))
