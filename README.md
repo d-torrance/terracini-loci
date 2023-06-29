@@ -64,3 +64,31 @@ i11 : assertEmptyTerracini(3, rationalNormalCurve 7)
 i12 : assertEmptyTerracini(4, rationalNormalCurve 7)
  -- 1028.94 seconds elapsed
  ```
+
+### Elliptic normal quintic
+
+```m2
+i3 : kk = ZZ/32003;
+
+i4 : S = kk[y_0..y_9];
+
+i5 : A = genericSkewMatrix(S, 5);
+
+             5       5
+o5 : Matrix S  <--- S
+
+i6 : R = kk[x_0..x_4];
+
+i7 : I = pfaffians(4, sub(A, apply(10, i -> S_i => random(1, R))));
+
+o7 : Ideal of R
+
+i8 : assert(dim I == 2)
+
+i9 : assert(genus I == 1)
+
+i10 : assert(degree I == 5)
+
+i11 : assertEmptyTerracini(2, I)
+ -- 32.506 seconds elapsed
+ ```

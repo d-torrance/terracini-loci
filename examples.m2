@@ -1,6 +1,10 @@
 restart
 needsPackage "TerraciniLoci"
 
+----------------------------
+-- rational normal curves --
+----------------------------
+
 rationalNormalCurve = d -> (
     kk := ZZ/32003;
     (s, t, x) := (symbol s, symbol t, symbol x);
@@ -28,3 +32,18 @@ assertEmptyTerracini(3, rationalNormalCurve 6)
 assertEmptyTerracini(2, rationalNormalCurve 7)
 assertEmptyTerracini(3, rationalNormalCurve 7)
 assertEmptyTerracini(4, rationalNormalCurve 7)
+
+----------------------------
+-- elliptic normal curves --
+----------------------------
+
+-- elliptic normal quintic
+kk = ZZ/32003;
+S = kk[y_0..y_9];
+A = genericSkewMatrix(S, 5);
+R = kk[x_0..x_4];
+I = pfaffians(4, sub(A, apply(10, i -> S_i => random(1, R))));
+assert(dim I == 2)
+assert(genus I == 1)
+assert(degree I == 5)
+assertEmptyTerracini(2, I)
