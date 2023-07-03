@@ -1,5 +1,8 @@
 newPackage("TerraciniLoci",
-    PackageImports => {"CorrespondenceScrolls", "FastMinors"})
+    PackageImports => {
+	"CorrespondenceScrolls",
+	"FastMinors",
+	"MinimalPrimes"})
 
 export {
     "terraciniLocus"
@@ -41,7 +44,7 @@ terraciniLocus(ZZ, Matrix, Ideal) := (r, A, I) -> (
 	" minors for ideal of singular points");
     blocksingular := recursiveMinors(blockrank, A);
     singular := intersect apply(r, i -> sub(blocksingular, opts#i));
-    saturate(result, singular))
+    radical result : radical singular)
 
 terraciniLocus(ZZ, RingMap) := (r, f) -> (
     terraciniLocus(r, jacobian matrix f, ideal 0_(target f)))
