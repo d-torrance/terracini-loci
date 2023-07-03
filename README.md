@@ -134,7 +134,8 @@ i5 : assertCorollary55 3
 i6 : assertCorollary55 4
  -- 0.711542 seconds elapsed
 
-i7 : I = elapsedTime terraciniLocus(3, delPezzoSurface 1);
+i7 : -- Corollary 5.7
+I = elapsedTime terraciniLocus(3, delPezzoSurface 1);
  -- 230.215 seconds elapsed
 
                 ZZ
