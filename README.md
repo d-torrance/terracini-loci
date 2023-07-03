@@ -92,3 +92,56 @@ i10 : assert(degree I == 5)
 i11 : assertEmptyTerracini(2, I)
  -- 32.506 seconds elapsed
  ```
+
+### del Pezzo surfaces
+
+```m2
+i1 : delPezzoSurface = t -> (
+    kk := ZZ/32003;
+    d := 9 - t;
+    (x, y) := (symbol x, symbol y);
+    R := kk[y_0..y_2];
+    S := kk[x_0..x_d];
+    P := intersect \\ ideal \ {
+	{y_0, y_1}, {y_0, y_2}, {y_1, y_2}, {y_0 - y_1, y_0 - y_2}
+	}_{0..t - 1};
+    map(R, S, super basis(3, P)))
+
+o1 = delPezzoSurface
+
+o1 : FunctionClosure
+
+i2 : -- Corollary 5.5
+assertCorollary55 = t -> (
+    I := elapsedTime terraciniLocus(2, delPezzoSurface t);
+    comps := primaryDecomposition I;
+    assert(#comps == (if t == 4 then 5 else t) and
+	all(comps, J -> dim J - 2 == 3)))
+
+o2 = assertCorollary55
+
+o2 : FunctionClosure
+
+i3 : assertCorollary55 1
+ -- 0.557642 seconds elapsed
+
+i4 : assertCorollary55 2
+ -- 0.443816 seconds elapsed
+
+i5 : assertCorollary55 3
+ -- 0.512567 seconds elapsed
+
+i6 : assertCorollary55 4
+ -- 0.711542 seconds elapsed
+
+i7 : I = elapsedTime terraciniLocus(3, delPezzoSurface 1);
+ -- 230.215 seconds elapsed
+
+                ZZ
+o7 : Ideal of -----[z   ..z   ]
+              32003  0,0   2,2
+
+i8 : comps = primaryDecomposition I;
+
+i9 : assert(#comps == 4 and all(comps, J -> dim J - 3 == 5))
+```

@@ -47,3 +47,35 @@ assert(dim I == 2)
 assert(genus I == 1)
 assert(degree I == 5)
 assertEmptyTerracini(2, I)
+
+------------------------
+-- del Pezzo surfaces --
+------------------------
+
+delPezzoSurface = t -> (
+    kk := ZZ/32003;
+    d := 9 - t;
+    (x, y) := (symbol x, symbol y);
+    R := kk[y_0..y_2];
+    S := kk[x_0..x_d];
+    P := intersect \\ ideal \ {
+	{y_0, y_1}, {y_0, y_2}, {y_1, y_2}, {y_0 - y_1, y_0 - y_2}
+	}_{0..t - 1};
+    map(R, S, super basis(3, P)))
+
+-- Corollary 5.5
+assertCorollary55 = t -> (
+    I := elapsedTime terraciniLocus(2, delPezzoSurface t);
+    comps := primaryDecomposition I;
+    assert(#comps == (if t == 4 then 5 else t) and
+	all(comps, J -> dim J - 2 == 3)))
+
+assertCorollary55 1
+assertCorollary55 2
+assertCorollary55 3
+assertCorollary55 4
+
+-- Corollary 5.7
+I = elapsedTime terraciniLocus(3, delPezzoSurface 1);
+comps = primaryDecomposition I;
+assert(#comps == 4 and all(comps, J -> dim J - 3 == 5))
