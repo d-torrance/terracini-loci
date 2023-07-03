@@ -37,11 +37,10 @@ terraciniLocus(ZZ, Matrix, Ideal) := (r, A, I) -> (
     result = saturate(result, duplicate);
     blockrank := if zero codim I then nrows else codim I;
     verboseLog("computing ",
-	toString(r * binomial(nrows, blockrank)),
+	toString binomial(nrows, blockrank),
 	" minors for ideal of singular points");
-    singular := intersect apply(r, i ->
-	recursiveMinors(blockrank, B^(toList(i * nrows..(i + 1) * nrows - 1)),
-	    Threads => 4));
+    blocksingular := recursiveMinors(blockrank, A);
+    singular := intersect apply(r, i -> sub(blocksingular, opts#i));
     saturate(result, singular))
 
 terraciniLocus(ZZ, RingMap) := (r, f) -> (
