@@ -79,3 +79,13 @@ assertCorollary55 4
 I = elapsedTime terraciniLocus(3, delPezzoSurface 1);
 comps = primaryDecomposition I;
 assert(#comps == 4 and all(comps, J -> dim J - 3 == 5))
+
+------------------------
+-- Veronese varieties --
+------------------------
+
+needsPackage "Resultants"
+
+assertEmptyTerracini(2, veronese(2, 3))
+I = elapsedTime terraciniLocus(3, veronese(2, 3));
+assert(#primaryDecomposition I == 1 and dim I - 3 == 2 * 2 + 3 - 2)

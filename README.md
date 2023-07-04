@@ -146,3 +146,28 @@ i8 : comps = primaryDecomposition I;
 
 i9 : assert(#comps == 4 and all(comps, J -> dim J - 3 == 5))
 ```
+
+### Veronese varieties
+
+```m2
+i2 : needsPackage "Resultants"
+ -- warning: symbol "resultant" in Elimination.Dictionary is shadowed by a symbol in Resultants.Dictionary
+ --   use the synonym Elimination$resultant
+ -- warning: symbol "discriminant" in Elimination.Dictionary is shadowed by a symbol in Resultants.Dictionary
+ --   use the synonym Elimination$discriminant
+
+o2 = Resultants
+
+o2 : Package
+
+i3 : assertEmptyTerracini(2, veronese(2, 3))
+ -- 0.730559 seconds elapsed
+
+i4 : I = elapsedTime terraciniLocus(3, veronese(2, 3));
+ -- 617.377 seconds elapsed
+
+o4 : Ideal of QQ[z   ..z   ]
+                  0,0   2,2
+
+i5 : assert(#primaryDecomposition I == 1 and dim I - 3 == 2 * 2 + 3 - 2)
+```
