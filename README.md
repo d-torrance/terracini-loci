@@ -1,7 +1,7 @@
 # TerraciniLoci package for Macaulay2
 
 This package implements the algorithms from Section 8 of the paper
-*Terracini loci of interesting surfaces* by F. Galuppi,
+*Geometry of first nonempty Terracini loci* by F. Galuppi,
 P. Santarsiero, D. Torrance, and E. Turatti.
 
 ## Examples
