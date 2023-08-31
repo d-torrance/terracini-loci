@@ -65,7 +65,10 @@ i12 : assertEmptyTerracini(4, rationalNormalCurve 7)
  -- 1028.94 seconds elapsed
  ```
 
-### Rational quintic in P^4 (Example 4.5)
+### Rational quintic in $\mathbb P^4$
+
+Example 4.5
+
 ```m2
 i3 : kk = ZZ/32003;
 
