@@ -89,3 +89,18 @@ needsPackage "Resultants"
 assertEmptyTerracini(2, veronese(2, 3))
 I = elapsedTime terraciniLocus(3, veronese(2, 3));
 assert(#primaryDecomposition I == 1 and dim I - 3 == 2 * 2 + 3 - 2)
+
+------------------------------
+-- Segre-Veronese varieties --
+------------------------------
+
+segreVeronese = (N, D) -> (
+    x := symbol x;
+    r := #N;
+    R := QQ new Array from splice apply(r, i -> x_(i, 0)..x_(i, N#i));
+    y := symbol y;
+    S := QQ[y_0..y_(product(N, D, (n, d) -> binomial(n + d, d)) - 1)];
+    map(R, S, flatten entries first tensor apply(r, i -> (
+		(n, d) := (N_i, D_i);
+		vector apply(subsets(n + d, d), A -> product(d, j ->
+			x_(i, A#j - j)))))))
