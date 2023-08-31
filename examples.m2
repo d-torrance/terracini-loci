@@ -33,6 +33,17 @@ assertEmptyTerracini(2, rationalNormalCurve 7)
 assertEmptyTerracini(3, rationalNormalCurve 7)
 assertEmptyTerracini(4, rationalNormalCurve 7)
 
+---------------------------
+-- other rational curves --
+---------------------------
+
+-- example 4.5
+kk = ZZ/32003;
+R = kk[x, y];
+S = kk[z_0..z_4];
+f = map(R, S, {x^5, x^4*y, x^3*y^2, x*y^4, y^5});
+assertEmptyTerracini(2, f)
+
 ----------------------------
 -- elliptic normal curves --
 ----------------------------
