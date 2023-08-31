@@ -16,33 +16,31 @@ terraciniLocus(ZZ, Matrix, Ideal) := (r, A, I) -> (
     verboseLog := if debugLevel > 0 then printerr else identity;
     if ring A =!= ring I then error "expected rings to agree";
     R := ring A;
-    nrows := numRows A;
-    ncols := numColumns A;
-    verboseLog("stacked Jacobian is ", toString(r * nrows), " x ",
-	toString ncols);
+    s := numRows A;
+    t := numColumns A;
+    rk := rank A;
+    verboseLog("stacked matrix is ", toString(r * s), " x ", toString t);
     n := numgens R - 1;
-    S := productOfProjectiveSpaces(toList(r : n),
+    Q := productOfProjectiveSpaces(toList(r : n),
 	CoefficientField => coefficientRing R,
 	VariableName => "z");
-    opts := apply(r, i -> apply(n + 1, j -> R_j => S_((n + 1) * i + j)));
-    B := concatRows apply(r, i -> sub(A, opts#i));
-    J := ideal apply(r, i -> sub(I, opts#i));
+    opts := apply(r, i -> apply(n + 1, j -> R_j => Q_((n + 1) * i + j)));
+    Az := concatRows apply(r, i -> sub(A, opts#i));
+    Ir := ideal apply(r, i -> sub(I, opts#i));
     verboseLog("computing ",
-	toString binomial(max(r * nrows, ncols), min(r * nrows, ncols)),
-	" minors of stacked Jacobian ...");
-    result := recursiveMinors(min(r * nrows, ncols), B, Threads => 4) + J;
-    G := genericMatrix(S, n + 1, r);
+	toString binomial(max(r * rk, t), min(r * rk, t)),
+	" minors of stacked matrix ...");
+    result := recursiveMinors(min(r * rk, t), Az, Threads => 4) + Ir;
+    Z := genericMatrix(Q, n + 1, r);
     verboseLog("computing ",
 	toString(binomial(r, 2) * binomial(n + 1, 2)),
 	" minors for ideal of duplicate points");
     duplicate := intersect apply(subsets(r, 2), ij ->
-	recursiveMinors(2, G_ij, Threads => 4));
+	recursiveMinors(2, Z_ij, Threads => 4));
     result = saturate(result, duplicate);
-    blockrank := rank A;
-    verboseLog("computing ",
-	toString binomial(nrows, blockrank),
+    verboseLog("computing ", toString binomial(s, rk),
 	" minors for ideal of singular points");
-    blocksingular := recursiveMinors(blockrank, A);
+    blocksingular := recursiveMinors(rk, A);
     singular := intersect apply(r, i -> sub(blocksingular, opts#i));
     radical result : radical singular)
 
