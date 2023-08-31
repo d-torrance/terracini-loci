@@ -8,7 +8,7 @@ P. Santarsiero, D. Torrance, and E. Turatti.
 
 ### Rational normal curves
 
-**Example 4.2** Rational normal curves have empty Terracini loci.
+**Example 4.2.** Rational normal curves have empty Terracini loci.
 
 ```m2
 i1 : needsPackage "TerraciniLoci"
@@ -69,7 +69,7 @@ i12 : assertEmptyTerracini(4, rationalNormalCurve 7)
 
 ### Rational quintic in $\mathbb P^4$
 
-**Example 4.5** A counterexample to Proposition 4.4 in even-dimensional space.
+**Example 4.5.** A counterexample to Proposition 4.4 in even-dimensional space.
 
 ```m2
 i3 : kk = ZZ/32003;
