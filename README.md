@@ -69,7 +69,7 @@ i12 : assertEmptyTerracini(4, rationalNormalCurve 7)
 
 ### Elliptic normal quintic in $\mathbb P^4$
 
-**Example 4.2 (continued).** Elliptic normal curves in degree one greater than the dimension of the ambient space also have empty Terracini loci.
+**Example 4.2 (continued).** Elliptic normal curves with degree one greater than the dimension of the ambient space also have empty Terracini loci.
 
 ```m2
 i3 : kk = ZZ/32003;
