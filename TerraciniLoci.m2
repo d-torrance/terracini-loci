@@ -1,4 +1,22 @@
 newPackage("TerraciniLoci",
+    Headline => "Terracini loci of projective varieties",
+    Version => "0.1",
+    Date => "TBD",
+    Authors => {
+	{
+	    Name => "Francesco Galuppi",
+	    Email => "francesco.galuppi@impan.pl"},
+	{
+	    Name => "Pierpaola Santarsiero",
+	    Email => "pierpaola.santarsiero@uni-osnabrueck.de"},
+	{
+	    Name => "Doug Torrance",
+	    Email => "dtorrance@piedmont.edu",
+	    HomePage => "https://webwork.piedmont.edu/~dtorrance"},
+	{
+	    Name => "Ettore Teixeira Turatti",
+	    Email => "ettore.t.turatti@uit.no"}},
+    Keywords => {"Projective Algebraic Geometry"},
     PackageImports => {
 	"CorrespondenceScrolls",
 	"FastMinors",
