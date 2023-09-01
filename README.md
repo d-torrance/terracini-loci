@@ -6,9 +6,11 @@ P. Santarsiero, D. Torrance, and E. Turatti.
 
 ## Examples
 
-### Rational normal curves
+### Curves
 
-**Example 4.2.** Rational normal curves have empty Terracini loci.
+#### Rational normal curves (Example 4.2)
+
+Rational normal curves have empty Terracini loci.
 
 ```m2
 i1 : needsPackage "TerraciniLoci"
@@ -67,9 +69,9 @@ i12 : assertEmptyTerracini(4, rationalNormalCurve 7)
  -- 1028.94 seconds elapsed
  ```
 
-### Elliptic normal quintic in $\mathbb P^4$
+#### Elliptic normal quintic in $\mathbb P^4$ (Example 4.2 continued)
 
-**Example 4.2 (continued).** Elliptic normal curves with degree one greater than the dimension of the ambient space also have empty Terracini loci.
+Elliptic normal curves with degree one greater than the dimension of the ambient space also have empty Terracini loci.
 
 ```m2
 i3 : kk = ZZ/32003;
@@ -97,8 +99,9 @@ i11 : assertEmptyTerracini(2, I)
  -- 32.506 seconds elapsed
  ```
 
-### Rational octic in $\mathbb P^7$
-**Corollary 4.3.** The bound from this result is not sharp.  Indeed, it only guarantees that the 2nd Terracini locus is empty, but we see below that the 3rd Terracini locus is empty as well.
+####  Rational octic in $\mathbb P^7$ (Corollary 4.3)
+
+The bound from this result is not sharp.  Indeed, it only guarantees that the 2nd Terracini locus of this curve is empty, but we see below that the 3rd Terracini locus is empty as well.
 
 ```m2
 i3 : kk = ZZ/32003;
@@ -121,9 +124,9 @@ i8 : assertEmptyTerracini(3, f)
  -- 10.2748 seconds elapsed
 ```
 
-### Rational quintic in $\mathbb P^4$
+#### Rational quintic in $\mathbb P^4$ (Example 4.5)
 
-**Example 4.5.** A counterexample to Proposition 4.4 in even-dimensional space.
+A counterexample to Proposition 4.4 in even-dimensional space.
 
 ```m2
 i3 : kk = ZZ/32003;
