@@ -209,7 +209,7 @@ i9 : assert(#comps == 4 and all(comps, J -> dim J - 3 == 5))
 
 #### 2nd Terracini locus of the Veronese cubic surface (Proposition 6.1)
 
-When $2r < d + 2$, the $r$th Terracini locus of $V_n^d$ is empty.
+When $2r < d + 2$, the $`r`$th Terracini locus of $V_n^d$ is empty.
 
 ```m2
 i2 : needsPackage "Resultants"
@@ -228,7 +228,7 @@ i3 : assertEmptyTerracini(2, veronese(2, 3))
 
 #### 3rd Terracini locus of the Veronese cubic surface (Theorem 1.1)
 
-When $r = \left\lceil\frac{d+2}{2}\right\rceil$, the $r$th Terracini locus is irreducible of dimension $2n + r - 2$.
+When $r = \left\lceil\frac{d+2}{2}\right\rceil$, the $`r`$th Terracini locus is irreducible of dimension $2n + r - 2$.
 
 ```m2
 
