@@ -67,26 +67,9 @@ i12 : assertEmptyTerracini(4, rationalNormalCurve 7)
  -- 1028.94 seconds elapsed
  ```
 
-### Rational quintic in $\mathbb P^4$
+### Elliptic normal quintic in $\mathbb P^4$
 
-**Example 4.5.** A counterexample to Proposition 4.4 in even-dimensional space.
-
-```m2
-i3 : kk = ZZ/32003;
-
-i4 : R = kk[x, y];
-
-i5 : S = kk[z_0..z_4];
-
-i6 : f = map(R, S, {x^5, x^4*y, x^3*y^2, x*y^4, y^5});
-
-o6 : RingMap R <--- S
-
-i7 : assertEmptyTerracini(2, f)
- -- 0.167679 seconds elapsed
- ```
-
-### Elliptic normal quintic
+**Example 4.2 (continued).** Elliptic normal curves in degree one greater than the dimension of the ambient space also have empty Terracini loci.
 
 ```m2
 i3 : kk = ZZ/32003;
@@ -113,6 +96,26 @@ i10 : assert(degree I == 5)
 i11 : assertEmptyTerracini(2, I)
  -- 32.506 seconds elapsed
  ```
+
+### Rational quintic in $\mathbb P^4$
+
+**Example 4.5.** A counterexample to Proposition 4.4 in even-dimensional space.
+
+```m2
+i3 : kk = ZZ/32003;
+
+i4 : R = kk[x, y];
+
+i5 : S = kk[z_0..z_4];
+
+i6 : f = map(R, S, {x^5, x^4*y, x^3*y^2, x*y^4, y^5});
+
+o6 : RingMap R <--- S
+
+i7 : assertEmptyTerracini(2, f)
+ -- 0.167679 seconds elapsed
+ ```
+
 
 ### del Pezzo surfaces
 
