@@ -1,6 +1,5 @@
 -- this file contains the code used for the examples in README.md
 
-restart
 needsPackage "TerraciniLoci"
 
 ----------------------------
