@@ -123,7 +123,7 @@ i8 : assertEmptyTerracini(3, f)
 
 #### Rational quintic in $\mathbb P^4$ (Example 4.5)
 
-A counterexample to Proposition 4.4 in even-dimensional space.
+A counterexample to Proposition 4.4 in even-dimensional space, i.e., a curve with an empty last Terracini locus that is not the rational normal curve.
 
 ```m2
 i3 : kk = ZZ/32003;
@@ -228,7 +228,7 @@ i3 : assertEmptyTerracini(2, veronese(2, 3))
 
 #### 3rd Terracini locus of the Veronese cubic surface (Theorem 1.1)
 
-When $r = \left\lceil\frac{d+2}{2}\right\rceil$, the $`r`$th Terracini locus is irreducible of dimension $2n + r - 2$.
+When $r = \left\lceil\frac{d+2}{2}\right\rceil$, the $`r`$th Terracini locus of $V_n^d$ is irreducible of dimension $2n + r - 2$.
 
 ```m2
 
