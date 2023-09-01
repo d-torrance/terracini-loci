@@ -124,25 +124,3 @@ segreVeronese = (N, D) -> (
 		(n, d) := (N_i, D_i);
 		vector apply(subsets(n + d, d), A -> product(d, j ->
 			x_(i, A#j - j)))))))
-
-maxR = (N, D) -> floor(product(N, D, (n, d) -> binomial(n + d, d)) / (sum N + 1))
-
-X = segreVeronese({1, 1}, {1, 2});
-dim terraciniLocus(2, X)
-
-X = segreVeronese({1, 2}, {1, 2});
-dim terraciniLocus(2, X)
-
-X = segreVeronese({2, 2}, {1, 2});
-dim terraciniLocus(2, X)
-
-
-maxR({1, 1}, {1, 4})
-X = segreVeronese({1, 1}, {1, 3});
-dim terraciniLocus(2, X)
-dim terraciniLocus(3, X)
-
-
-loadPackage("TerraciniLoci",
-    FileName => "~/src/terracini-loci/terracini-loci/TerraciniLoci.m2",
-    Reload => true)
