@@ -145,7 +145,7 @@ i7 : assertEmptyTerracini(2, f)
 
 #### 2nd Terracini loci of del Pezzo surfaces (Corollary 5.5)
 
-For $t = 1, 2, 3$, the blowup of $t$ points in $\mathbb P^2$, the 2nd Terracini locus has $t$ 3-dimensional irreducible components, and the blowup of 4 points has five 3-dimensional irreducible components.
+The 2nd Terracini locus of the blowup of $t$ points in $\mathbb P^2$, the 2nd Terracini locus has $t$ 3-dimensional irreducible components when $t\in\{1,2,3\}$ and five 3-dimensional irreducible components when $t = 4$.
 
 ```m2
 i1 : delPezzoSurface = t -> (
@@ -189,7 +189,7 @@ i6 : assertCorollary55 4
 
 #### 3nd Terracini locus of a del Pezzo surface (Corollary 5.7)
 
-The blowup of a single point in $\mathbb P^2$ has four 5-dimensional irreducible components.
+The 3rd Terracini locus of the blowup of a single point in $\mathbb P^2$ has four 5-dimensional irreducible components.
 
 ```m2
 i7 : -- Corollary 5.7
