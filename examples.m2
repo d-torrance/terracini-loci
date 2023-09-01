@@ -38,6 +38,14 @@ assertEmptyTerracini(4, rationalNormalCurve 7)
 -- other rational curves --
 ---------------------------
 
+-- corollary 4.3 not sharp
+kk = ZZ/32003;
+R = kk[x, y];
+S = kk[z_0..z_7];
+f = map(R, S, {x^8, x^7*y, x^6*y^2, x^5*y^3, x^4*y^4, x^3*y^5, x*y^7, y^8})
+assertEmptyTerracini(2, f)
+assertEmptyTerracini(3, f)
+
 -- example 4.5
 kk = ZZ/32003;
 R = kk[x, y];

@@ -97,6 +97,30 @@ i11 : assertEmptyTerracini(2, I)
  -- 32.506 seconds elapsed
  ```
 
+### Rational octic in $\mathbb P^7$
+**Corollary 4.3.** The bound from this result is not sharp.  Indeed, it only guarantees that the 2nd Terracini locus is empty, but we see below that the 3rd Terracini locus is empty as well.
+
+```m2
+i3 : kk = ZZ/32003;
+
+i4 : R = kk[x, y];
+
+i5 : S = kk[z_0..z_7];
+
+i6 : f = map(R, S, {x^8, x^7*y, x^6*y^2, x^5*y^3, x^4*y^4, x^3*y^5, x*y^7, y^8})
+
+                  8   7    6 2   5 3   4 4   3 5     7   8
+o6 = map (R, S, {x , x y, x y , x y , x y , x y , x*y , y })
+
+o6 : RingMap R <--- S
+
+i7 : assertEmptyTerracini(2, f)
+ -- 0.193917 seconds elapsed
+
+i8 : assertEmptyTerracini(3, f)
+ -- 10.2748 seconds elapsed
+```
+
 ### Rational quintic in $\mathbb P^4$
 
 **Example 4.5.** A counterexample to Proposition 4.4 in even-dimensional space.
