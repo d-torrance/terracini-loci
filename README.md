@@ -69,9 +69,22 @@ i12 : assertEmptyTerracini(4, rationalNormalCurve 7)
  -- 1028.94 seconds elapsed
  ```
 
+When possible, it is better to use the `terraciniLocus` method with a ring
+map than an ideal.  In addition to only working for 2nd Terracini loci, the
+ideal method is also much slower.
+
+```m2
+i4 : assertEmptyTerracini(2, ker rationalNormalCurve 3)
+ -- 1.49868 seconds elapsed
+
+i5 : assertEmptyTerracini(2, ker rationalNormalCurve 4)
+ -- 14.4332 seconds elapsed
+```
+
 #### Elliptic normal quintic (Example 4.2 continued)
 
-Elliptic normal curves also have empty Terracini loci.
+Elliptic normal curves also have empty Terracini loci.  For this
+example, we must use the ideal method.
 
 ```m2
 i3 : kk = ZZ/32003;

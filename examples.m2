@@ -34,6 +34,10 @@ assertEmptyTerracini(2, rationalNormalCurve 7)
 assertEmptyTerracini(3, rationalNormalCurve 7)
 assertEmptyTerracini(4, rationalNormalCurve 7)
 
+-- using the ideal method
+assertEmptyTerracini(2, ker rationalNormalCurve 3)
+assertEmptyTerracini(2, ker rationalNormalCurve 4)
+
 ---------------------------
 -- other rational curves --
 ---------------------------
