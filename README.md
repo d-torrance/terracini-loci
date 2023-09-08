@@ -83,8 +83,8 @@ i5 : assertEmptyTerracini(2, ker rationalNormalCurve 4)
 
 #### Elliptic normal quintic (Example 4.2 continued)
 
-Elliptic normal curves also have empty Terracini loci.  For this
-example, we must use the ideal method.
+Elliptic normal curves in even-dimensional space also have empty
+Terracini loci.  For this example, we must use the ideal method.
 
 ```m2
 i3 : kk = ZZ/32003;
