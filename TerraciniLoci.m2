@@ -1,4 +1,4 @@
--- Copyright (c) 2023 Francesco Galuppi, Pierpaola Starsiero, Doug Torrance,
+-- Copyright (c) 2023 Francesco Galuppi, Pierpaola Santarsiero, Doug Torrance,
 -- and Ettore Teixeira Turatti
 
 -- Permission is hereby granted, free of charge, to any person obtaining
