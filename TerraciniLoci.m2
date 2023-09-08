@@ -39,6 +39,7 @@ newPackage("TerraciniLoci",
 	{
 	    Name => "Ettore Teixeira Turatti",
 	    Email => "ettore.t.turatti@uit.no"}},
+    HomePage => "https://github.com/d-torrance/terracini-loci",
     Keywords => {"Projective Algebraic Geometry"},
     PackageImports => {
 	"CorrespondenceScrolls",
