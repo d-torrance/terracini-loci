@@ -239,7 +239,7 @@ i3 : assertEmptyTerracini(2, veronese(2, 3))
  -- 0.730559 seconds elapsed
 ```
 
-#### 3rd Terracini locus of the Veronese cubic surface (Theorem 1.1)
+#### 3rd Terracini locus of the Veronese cubic surface (Theorem 6.4)
 
 When $r = \left\lceil\frac{d+2}{2}\right\rceil$, the $`r`$th Terracini locus of $V_n^d$ is irreducible of dimension $2n + r - 2$.
 
