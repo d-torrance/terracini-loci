@@ -118,13 +118,25 @@ assert(#primaryDecomposition I == 1 and dim I - 3 == 2 * 2 + 3 - 2)
 -- Segre-Veronese varieties --
 ------------------------------
 
-segreVeronese = (N, D) -> (
+segreVeronese = (n, d) -> (
     x := symbol x;
-    r := #N;
-    R := QQ new Array from splice apply(r, i -> x_(i, 0)..x_(i, N#i));
+    r := #n;
+    R := QQ new Array from splice apply(r, i -> x_(i, 0)..x_(i, n#i));
     y := symbol y;
-    S := QQ[y_0..y_(product(N, D, (n, d) -> binomial(n + d, d)) - 1)];
+    S := QQ[y_0..y_(product(n, d, (ni, di) -> binomial(ni + di, di)) - 1)];
     map(R, S, flatten entries first tensor apply(r, i -> (
-		(n, d) := (N_i, D_i);
-		vector apply(subsets(n + d, d), A -> product(d, j ->
+		vector apply(subsets(n#i + d#i, d#i), A -> product(d#i, j ->
 			x_(i, A#j - j)))))))
+
+assertTheorem76 = (n, d) -> (
+    r := ceiling((d#0 + 2)/2);
+    I := elapsedTime terraciniLocus(r, segreVeronese(n, d));
+    jHat := max select(#d, i -> ceiling((d#i + 2)/2) == r) + 1;
+    comps := primaryDecomposition I;
+    assert(#comps == jHat);
+    assert(sort apply(comps, J -> dim J - 2 - r) ==
+	sort apply (jHat, i -> sum n + n#i + r - 2)))
+
+assertTheorem76({1, 1}, {1, 2})
+assertTheorem76({1, 1}, {1, 3})
+assertTheorem76({1, 1}, {2, 2})
