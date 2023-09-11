@@ -256,9 +256,11 @@ i5 : assert(#primaryDecomposition I == 1 and dim I - 3 == 2 * 2 + 3 - 2)
 
 ## Segre-Veronese varieties
 
-When $`r = \left\lceil\frac{d_1+2}{2}\right\rceil`$ and $`\hat\jmath=\max\left\{i\in\{1,\ldots,k\}:\left\lceil\frac{d_i+2}{2}\right\rceil=r\right\}`$, then the $`r`$th Terracini locus of the Segre-Veronese embedding $`\mathbb P^{n_1}\times\cdots\times\mathbb P^{n_k}`$ via $`\mathcal O(d_1,\ldots,d_k)`$ has $`\hat\jmath`$ components of dimension $`n_1+\dots+n_k+n_k + r - 2`$.
+### Segre-Veronese embeddings of $`\mathbb P^1\times\mathbb P^1`$ (Theorem 7.6)
 
-We see these here for $`\mathbb P^1\times\mathbb P^1`$ embedded via $`\mathcal O(1, 2)`$, $`\mathcal O(1, 3)`$, and $`\mathcal O(2, 2)`$.
+If $`r = \left\lceil\frac{d_1+2}{2}\right\rceil`$ and $`\hat\jmath=\max\left\{i\in\{1,\ldots,k\}:\left\lceil\frac{d_i+2}{2}\right\rceil=r\right\}`$, then the $`r`$th Terracini locus of the Segre-Veronese embedding $`\mathbb P^{n_1}\times\cdots\times\mathbb P^{n_k}`$ via $`\mathcal O(d_1,\ldots,d_k)`$ has $`\hat\jmath`$ components of dimension $`n_1+\dots+n_k+n_i + r - 2`$.
+
+We demonstrate this for $`\mathbb P^1\times\mathbb P^1`$ embedded via $`\mathcal O(1, 2)`$, $`\mathcal O(1, 3)`$, and $`\mathcal O(2, 2)`$.
 
 ```m2
 i2 : segreVeronese = (n, d) -> (
