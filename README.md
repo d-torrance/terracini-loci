@@ -253,3 +253,49 @@ o4 : Ideal of QQ[z   ..z   ]
 
 i5 : assert(#primaryDecomposition I == 1 and dim I - 3 == 2 * 2 + 3 - 2)
 ```
+
+## Segre-Veronese varieties
+
+When $`r = \left\lceil\frac{d_1+2}{2}\right\rceil`$ and $`\hat\jmath=\max\left\{i\in\{1,\ldots,k\}:\left\lceil\frac{d_i+2}{2}\right\rceil=r\right\}`$, then the $`r`$th Terracini locus of the Segre-Veronese embedding $`\mathbb P^{n_1}\times\cdots\times\mathbb P^{n_k}`$ via $`\mathcal O(d_1,\ldots,d_k)`$ has $`\hat\jmath`$ components of dimension $`n_1+\dots+n_k+n_k + r - 2`$.
+
+We see these here for $`\mathbb P^1\times\mathbb P^1`$ embedded via $`\mathcal O(1, 2)`$, $`\mathcal O(1, 3)`$, and $`\mathcal O(2, 2)`$.
+
+```m2
+i2 : segreVeronese = (n, d) -> (
+    x := symbol x;
+    r := #n;
+    R := QQ new Array from splice apply(r, i -> x_(i, 0)..x_(i, n#i));
+    y := symbol y;
+    S := QQ[y_0..y_(product(n, d, (ni, di) -> binomial(ni + di, di)) - 1)];
+    map(R, S, flatten entries first tensor apply(r, i -> (
+		vector apply(subsets(n#i + d#i, d#i), A -> product(d#i, j ->
+			x_(i, A#j - j)))))))
+
+
+o2 = segreVeronese
+
+o2 : FunctionClosure
+
+i3 : assertTheorem76 = (n, d) -> (
+    r := ceiling((d#0 + 2)/2);
+    I := elapsedTime terraciniLocus(r, segreVeronese(n, d));
+    jHat := max select(#d, i -> ceiling((d#i + 2)/2) == r) + 1;
+    comps := primaryDecomposition I;
+    assert(#comps == jHat);
+    assert(sort apply(comps, J -> dim J - 2 - r) ==
+	sort apply (jHat, i -> sum n + n#i + r - 2)))
+
+
+o3 = assertTheorem76
+
+o3 : FunctionClosure
+
+i4 : assertTheorem76({1, 1}, {1, 2})
+ -- 0.590006 seconds elapsed
+
+i5 : assertTheorem76({1, 1}, {1, 3})
+ -- 3.76348 seconds elapsed
+
+i6 : assertTheorem76({1, 1}, {2, 2})
+ -- 11.7846 seconds elapsed
+```
