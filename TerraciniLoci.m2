@@ -70,6 +70,7 @@ terraciniLocus(ZZ, Matrix, Ideal) := (r, A, I) -> (
     result := recursiveMinors(min(r * rk, t), Az, Threads => 4) + Ir;
     Z := genericMatrix(Q, n + 1, r);
     duplicate := intersect apply(subsets(r, 2), ij ->
+	recursiveMinors(2, Z_ij, Threads => 4));
     result = saturate(result, duplicate);
     blocksingular := recursiveMinors(rk, A);
     singular := intersect apply(r, i -> sub(blocksingular, opts#i));
