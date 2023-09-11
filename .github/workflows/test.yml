@@ -1,0 +1,11 @@
+name: test
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Macaulay2
+        run: sudo apt install -y macaulay2
+      - name: Test TerraciniLoci package
+        run: M2 -q --stop -e 'check needsPackage "TerraciniLoci"; exit 0'
