@@ -81,3 +81,46 @@ terraciniLocus(ZZ, RingMap) := (r, f) -> (
 
 terraciniLocus(ZZ, Ideal) := (r, I) -> (
     terraciniLocus(r, transpose jacobian I, I))
+
+beginDocumentation()
+
+doc ///
+  Key
+    TerraciniLoci
+  Headline
+    package for computing Terracini loci
+  Description
+    Text
+      This package implements the algorithms from Section 8 of the
+      paper "Geometry of first nonempty Terracini loci" by F. Galuppi,
+      P. Santarsiero, D. Torrance, and E. Turatti.
+
+      The Terracini locus of projective variety $X$ is a subvariety of
+      the symmetric power $X^{(r)}$ containing all tclosure of all
+      sets $\{p_1,\ldots,p_r\}$ of points in $X$ for which the space
+      $\langle T_{p_1}X,\ldots,T_{p_r}X\rangle$ has less than the expected
+      dimension.
+
+      This package exports one method, @TO terraciniLocus@, for computing the
+      ideals of these varieties.
+///
+
+doc ///
+  Key
+    terraciniLocus
+    (terraciniLocus, ZZ, Matrix, Ideal)
+    (terraciniLocus, ZZ, RingMap)
+    (terraciniLocus, ZZ, Ideal)
+  Headline
+    compute the Terracini locus of a projective variety
+  Usage
+    terraciniLocus(r, X)
+  Inputs
+    r:ZZ
+    X:{RingMap,Ideal}
+  Outputs
+    :Ideal
+  Description
+    Text
+      TODO
+///
