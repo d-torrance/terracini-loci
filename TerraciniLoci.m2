@@ -124,3 +124,79 @@ doc ///
     Text
       TODO
 ///
+
+-----------
+-- tests --
+-----------
+-- just the faster (< 1s) examples
+
+TEST ///
+-- rational normal curves
+needsPackage "Resultants"
+assertEmptyTerracini = (r, f) -> assert(terraciniLocus(r, f) == 1)
+
+-- ring map
+assertEmptyTerracini(2, veronese(1, 3))
+assertEmptyTerracini(2, veronese(1, 4))
+
+-- ideal (slower)
+assertEmptyTerracini(2, ker veronese(1, 3))
+///
+
+TEST ///
+-- del pezzo surfaces
+delPezzoSurface = t -> (
+    kk := ZZ/32003;
+    d := 9 - t;
+    (x, y) := (symbol x, symbol y);
+    R := kk[y_0..y_2];
+    S := kk[x_0..x_d];
+    P := intersect \\ ideal \ {
+	{y_0, y_1}, {y_0, y_2}, {y_1, y_2}, {y_0 - y_1, y_0 - y_2}
+	}_{0..t - 1};
+    map(R, S, super basis(3, P)))
+
+assertCorollary55 = t -> (
+    I := terraciniLocus(2, delPezzoSurface t);
+    comps := primaryDecomposition I;
+    assert(#comps == (if t == 4 then 5 else t) and
+	all(comps, J -> dim J - 2 == 3)))
+
+assertCorollary55 1
+assertCorollary55 2
+assertCorollary55 3
+assertCorollary55 4
+///
+
+TEST ///
+-- veronese
+needsPackage "Resultants"
+assertEmptyTerracini = (r, f) -> assert(terraciniLocus(r, f) == 1)
+
+assertEmptyTerracini(2, veronese(2, 3))
+///
+
+TEST ///
+-- segre-veronese
+
+segreVeronese = (n, d) -> (
+    x := symbol x;
+    r := #n;
+    R := QQ new Array from splice apply(r, i -> x_(i, 0)..x_(i, n#i));
+    y := symbol y;
+    S := QQ[y_0..y_(product(n, d, (ni, di) -> binomial(ni + di, di)) - 1)];
+    map(R, S, flatten entries first tensor apply(r, i -> (
+		vector apply(subsets(n#i + d#i, d#i), A -> product(d#i, j ->
+			x_(i, A#j - j)))))))
+
+assertTheorem76 = (n, d) -> (
+    r := ceiling((d#0 + 2)/2);
+    I := terraciniLocus(r, segreVeronese(n, d));
+    jHat := max select(#d, i -> ceiling((d#i + 2)/2) == r) + 1;
+    comps := primaryDecomposition I;
+    assert(#comps == jHat);
+    assert(sort apply(comps, J -> dim J - 2 - r) ==
+	sort apply (jHat, i -> sum n + n#i + r - 2)))
+
+assertTheorem76({1, 1}, {1, 2})
+///
