@@ -199,7 +199,7 @@ i6 : assertCorollary55 4
  -- 0.711542 seconds elapsed
 ```
 
-#### 3nd Terracini locus of a del Pezzo surface (Corollary 5.7)
+#### 3rd Terracini locus of a del Pezzo surface (Corollary 5.7)
 
 The 3rd Terracini locus of the blowup of a single point in $\mathbb P^2$ has four 5-dimensional irreducible components.
 
