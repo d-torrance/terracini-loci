@@ -19,54 +19,53 @@ o1 = TerraciniLoci
 
 o1 : Package
 
-i2 : rationalNormalCurve = d -> (
-    kk := ZZ/32003;
-    (s, t, x) := (symbol s, symbol t, symbol x);
-    R := kk[s, t];
-    S := kk[x_0..x_d];
-    map(R, S, apply(d + 1, i -> s^(d - i) * t^i)))
+i2 : assertEmptyTerracini = (r, f) -> elapsedTime assert(terraciniLocus(r, f) == 1)
 
-o2 = rationalNormalCurve
+o2 = assertEmptyTerracini
 
 o2 : FunctionClosure
 
-i3 : assertEmptyTerracini = (r, f) -> elapsedTime assert(terraciniLocus(r, f) == 1)
+i3 : needsPackage "Resultants"
+ -- warning: symbol "resultant" in Elimination.Dictionary is shadowed by a symbol in Resultants.Dictionary
+ --   use the synonym Elimination$resultant
+ -- warning: symbol "discriminant" in Elimination.Dictionary is shadowed by a symbol in Resultants.Dictionary
+ --   use the synonym Elimination$discriminant
 
-o3 = assertEmptyTerracini
+o3 = Resultants
 
-o3 : FunctionClosure
+o3 : Package
 
 i4 : -- twisted cubic
-     assertEmptyTerracini(2, rationalNormalCurve 3)
- -- 0.129286 seconds elapsed
+     assertEmptyTerracini(2, veronese(1, 3))
+ -- 0.168295 seconds elapsed
 
 i5 : -- rational normal quartic
-     assertEmptyTerracini(2, rationalNormalCurve 4)
- -- 0.167151 seconds elapsed
+     assertEmptyTerracini(2, veronese(1, 4))
+ -- 0.174667 seconds elapsed
 
 i6 : -- rational normal quintic
-     assertEmptyTerracini(2, rationalNormalCurve 5)
- -- 0.194115 seconds elapsed
+     assertEmptyTerracini(2, veronese(1, 5))
+ -- 0.179793 seconds elapsed
 
-i7 : assertEmptyTerracini(3, rationalNormalCurve 5)
- -- 0.425239 seconds elapsed
+i7 : assertEmptyTerracini(3, veronese(1, 5))
+ -- 0.503009 seconds elapsed
 
 i8 : -- rational normal sextic
-     assertEmptyTerracini(2, rationalNormalCurve 6)
- -- 0.223492 seconds elapsed
+     assertEmptyTerracini(2, veronese(1, 6))
+ -- 0.17569 seconds elapsed
 
-i9 : assertEmptyTerracini(3, rationalNormalCurve 6)
- -- 1.04454 seconds elapsed
+i9 : assertEmptyTerracini(3, veronese(1, 6))
+ -- 0.916899 seconds elapsed
 
 i10 : -- rational normal septic
-      assertEmptyTerracini(2, rationalNormalCurve 7)
- -- 0.19556 seconds elapsed
+      assertEmptyTerracini(2, veronese(1, 7))
+ -- 0.249929 seconds elapsed
 
-i11 : assertEmptyTerracini(3, rationalNormalCurve 7)
- -- 2.20825 seconds elapsed
+i11 : assertEmptyTerracini(3, veronese(1, 7))
+ -- 2.11239 seconds elapsed
 
-i12 : assertEmptyTerracini(4, rationalNormalCurve 7)
- -- 1028.94 seconds elapsed
+i12 : assertEmptyTerracini(4, veronese(1, 7))
+ -- 877.63 seconds elapsed
  ```
 
 When possible, it is better to use the `terraciniLocus` method with a ring
@@ -74,11 +73,11 @@ map than an ideal.  In addition to only working for 2nd Terracini loci, the
 ideal method is also much slower.
 
 ```m2
-i4 : assertEmptyTerracini(2, ker rationalNormalCurve 3)
- -- 1.49868 seconds elapsed
+i13 : assertEmptyTerracini(2, ker veronese(1, 3))
+ -- 1.48714 seconds elapsed
 
-i5 : assertEmptyTerracini(2, ker rationalNormalCurve 4)
- -- 14.4332 seconds elapsed
+i14 : assertEmptyTerracini(2, ker veronese(1, 4))
+ -- 12.9082 seconds elapsed
 ```
 
 #### Elliptic normal quintic (Example 4.2 continued)
