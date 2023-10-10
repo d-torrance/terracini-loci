@@ -111,7 +111,7 @@ i11 : assertEmptyTerracini(2, I)
  -- 32.506 seconds elapsed
  ```
 
-####  Rational octic in $\mathbb P^7$ (Corollary 4.3)
+####  Rational octic in projective 7-space (Corollary 4.3)
 
 The bound from this result is not sharp.  Indeed, it only guarantees that the 2nd Terracini locus of this curve is empty, but we see below that the 3rd Terracini locus is empty as well.
 
@@ -133,7 +133,7 @@ i8 : assertEmptyTerracini(3, f)
  -- 10.1608 seconds elapsed
 ```
 
-#### Rational quintic in $\mathbb P^4$ (Example 4.5)
+#### Rational quintic in projective 4-space (Example 4.5)
 
 A counterexample to Proposition 4.4 in even-dimensional space, i.e., a curve with an empty last Terracini locus that is not the rational normal curve.
 
@@ -152,7 +152,7 @@ i7 : assertEmptyTerracini(2, f)
  -- 0.167679 seconds elapsed
  ```
 
-#### Rational quartic in $\mathbb P^3$
+#### Rational quartic in projective 3-space
 
 So far, we have only looked at curves with empty Terracini loci.  Now consider
 a rational quartic in $\mathbb P^3$.  Since it's not a rational normal curve,
