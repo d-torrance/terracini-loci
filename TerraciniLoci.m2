@@ -51,10 +51,11 @@ export {
     }
 
 importFrom("Core", {"concatRows"})
+exportFrom(FastMinors, {"Threads"})
 
-terraciniLocus = method()
+terraciniLocus = method(Options => {Threads => 0})
 
-terraciniLocus(ZZ, Matrix, Ideal) := (r, A, I) -> (
+terraciniLocus(ZZ, Matrix, Ideal) := o -> (r, A, I) -> (
     if ring A =!= ring I then error "expected rings to agree";
     R := ring A;
     s := numRows A;
@@ -67,20 +68,20 @@ terraciniLocus(ZZ, Matrix, Ideal) := (r, A, I) -> (
     opts := apply(r, i -> apply(n + 1, j -> R_j => Q_((n + 1) * i + j)));
     Az := concatRows apply(r, i -> sub(A, opts#i));
     Ir := ideal apply(r, i -> sub(I, opts#i));
-    result := recursiveMinors(min(r * rk, t), Az, Threads => 4) + Ir;
+    result := recursiveMinors(min(r * rk, t), Az, o) + Ir;
     Z := genericMatrix(Q, n + 1, r);
     duplicate := intersect apply(subsets(r, 2), ij ->
-	recursiveMinors(2, Z_ij, Threads => 4));
+	recursiveMinors(2, Z_ij, o));
     result = saturate(result, duplicate);
-    blocksingular := recursiveMinors(rk, A);
+    blocksingular := recursiveMinors(rk, A, o);
     singular := intersect apply(r, i -> sub(blocksingular, opts#i));
     radical result : radical singular)
 
-terraciniLocus(ZZ, RingMap) := (r, f) -> (
-    terraciniLocus(r, jacobian matrix f, ideal 0_(target f)))
+terraciniLocus(ZZ, RingMap) := o -> (r, f) -> (
+    terraciniLocus(r, jacobian matrix f, ideal 0_(target f), o))
 
-terraciniLocus(ZZ, Ideal) := (r, I) -> (
-    terraciniLocus(r, transpose jacobian I, I))
+terraciniLocus(ZZ, Ideal) := o -> (r, I) -> (
+    terraciniLocus(r, transpose jacobian I, I, o))
 
 beginDocumentation()
 
@@ -141,6 +142,9 @@ assertEmptyTerracini(2, veronese(1, 4))
 
 -- ideal (slower)
 assertEmptyTerracini(2, ker veronese(1, 3))
+
+-- also check Threads option
+assert(terraciniLocus(2, veronese(1, 3), Threads => 2) == 1)
 ///
 
 TEST ///
