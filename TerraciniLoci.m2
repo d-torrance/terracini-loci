@@ -68,7 +68,7 @@ terraciniLocus(ZZ, Matrix, Ideal) := o -> (r, A, I) -> (
     opts := apply(r, i -> apply(n + 1, j -> R_j => Q_((n + 1) * i + j)));
     Az := concatRows apply(r, i -> sub(A, opts#i));
     Ir := ideal apply(r, i -> sub(I, opts#i));
-    result := recursiveMinors(min(r * rk, t), Az, o) + Ir;
+    result := trim(recursiveMinors(min(r * rk, t), Az, o) + Ir);
     Z := genericMatrix(Q, n + 1, r);
     duplicate := intersect apply(subsets(r, 2), ij ->
 	recursiveMinors(2, Z_ij, o));
