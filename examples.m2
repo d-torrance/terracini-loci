@@ -52,6 +52,20 @@ S = kk[z_0..z_4];
 f = map(R, S, {x^5, x^4*y, x^3*y^2, x*y^4, y^5});
 assertEmptyTerracini(2, f)
 
+-- rational quartic in P^3 (nonempty terracini locus)
+kk = ZZ/32003;
+R = kk[x, y];
+S = kk[z_0..z_3];
+f = map(R, S, {x^4, x^3*y, x*y^3, y^4});
+T1 = elapsedTime terraciniLocus(2, f)
+T2 = elapsedTime terraciniLocus(2, ker f);
+betti T2
+
+use ring T1;
+g = map(ring T1, ring T2, sub(matrix f, {x => z_(0,0), y => z_(0, 1)}) |
+    sub(matrix f, {x => z_(1,0), y => z_(1, 1)}));
+saturate(g T2, intersect(ideal(z_(0, 0), z_(0, 1)), ideal(z_(1, 0), z_(1, 1))))
+
 ----------------------------
 -- elliptic normal curves --
 ----------------------------

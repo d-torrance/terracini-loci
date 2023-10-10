@@ -152,6 +152,79 @@ i7 : assertEmptyTerracini(2, f)
  -- 0.167679 seconds elapsed
  ```
 
+#### Rational quartic in $\mathbb P^3$
+
+So far, we have only looked at curves with empty Terracini loci.  Now consider
+a rational quartic in $\mathbb P^3$.  Since it's not a rational normal curve,
+we know by Proposition 4.4 that its 2nd Terracini locus is nonempty.
+
+```m2
+i1 : kk = ZZ/32003;
+
+i2 : R = kk[x, y];
+
+i3 : S = kk[z_0..z_3];
+
+i4 : f = map(R, S, {x^4, x^3*y, x*y^3, y^4});
+
+o4 : RingMap R <--- S
+
+i5 : T1 = elapsedTime terraciniLocus(2, f)
+ -- 0.0860385 seconds elapsed
+
+            2   2                          2   2
+o5 = ideal(z   z    + 4z   z   z   z    + z   z   )
+            0,1 1,0     0,0 0,1 1,0 1,1    0,0 1,1
+
+o5 : Ideal of kk[z   ..z   ]
+                  0,0   1,1
+```
+
+Let's confirm that this also works using the ideal method.
+
+```m2
+i6 : T2 = elapsedTime terraciniLocus(2, ker f);
+ -- 2.84349 seconds elapsed
+
+o6 : Ideal of kk[z   ..z   ]
+                  0,0   1,3
+
+i7 : betti T2
+
+            0  1
+o7 = total: 1 20
+         0: 1  .
+         1: .  4
+         2: . 14
+         3: .  2
+
+o7 : BettiTally
+```
+
+At first glance, these results seem to disagree.  But $T_1$ is the ideal of
+a variety in $\mathbb P^1\times\mathbb P^1$ and $T_2$ is the ideal of a variety
+in $\mathbb P^3\times\mathbb P^3$.  If we look at the image of $T_2$ under
+our map and saturate out with respect to the irrelevant ideals, we see that
+we indeed get the same thing.
+
+```m2
+i8 : use ring T1;
+
+i9 : g = map(ring T1, ring T2, sub(matrix f, {x => z_(0,0), y => z_(0, 1)}) |
+         sub(matrix f, {x => z_(1,0), y => z_(1, 1)}));
+
+o9 : RingMap kk[z   ..z   ] <--- kk[z   ..z   ]
+                 0,0   1,1           0,0   1,3
+
+i10 : saturate(g T2, intersect(ideal(z_(0, 0), z_(0, 1)), ideal(z_(1, 0), z_(1, 1))))
+
+             2   2                          2   2
+o10 = ideal(z   z    + 4z   z   z   z    + z   z   )
+             0,1 1,0     0,0 0,1 1,0 1,1    0,0 1,1
+
+o10 : Ideal of kk[z   ..z   ]
+                   0,0   1,1
+```
 
 ### del Pezzo surfaces
 
