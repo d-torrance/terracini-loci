@@ -12,6 +12,8 @@ P. Santarsiero, D. Torrance, and E. Turatti.
 
 Rational normal curves have empty Terracini loci.
 
+We load the `Resultants` package so we that can call the [`veronese`](https://macaulay2.com/doc/Macaulay2/share/doc/Macaulay2/Resultants/html/_veronese.html) function.  This returns the ring map corresponding to the Veronese embedding.
+
 ```m2
 i1 : needsPackage "TerraciniLoci"
 
