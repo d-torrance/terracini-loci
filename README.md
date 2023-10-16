@@ -4,6 +4,18 @@ This package implements the algorithms from Section 8 of the paper
 *Geometry of first nonempty Terracini loci* by F. Galuppi,
 P. Santarsiero, D. Torrance, and E. Turatti.
 
+## Description
+
+This package contains a method `terraciniLocus` with two installed method functions.
+
+### Parameterization
+
+If $X\subset\mathbb P^m$ is parametrized by the rational map $f:\mathbb P^n\dashrightarrow\P^m$, then `terraciniLocus(r, f)` will give the ideal of the preimage of the $r$th Terracini locus of $X$ in $(\mathbb P^n)^r$.
+
+### Ideal
+
+If $X\subset\mathbb P^n$ has ideal $I$, then `terraciniLocus(2, I)` will give the ideal of the preimage of the 2nd Terracini locus of $X$ in $\mathbb P^n\times\mathbb P^n$.
+
 ## Examples
 
 ### Curves
