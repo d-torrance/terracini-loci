@@ -10,7 +10,7 @@ This package contains a method `terraciniLocus` with two installed method functi
 
 ### Parameterization
 
-If $X\subset\mathbb P^m$ is parametrized by the rational map $f:\mathbb P^n\dashrightarrow\P^m$, then `terraciniLocus(r, f)` will give the ideal of the preimage of the $r$th Terracini locus of $X$ in $(\mathbb P^n)^r$.
+If $X\subset\mathbb P^m$ is parametrized by the rational map $f:\mathbb P^n\dashrightarrow\mathbb P^m$, then `terraciniLocus(r, f)` will give the ideal of the preimage of the $`r`$th Terracini locus of $X$ in $(\mathbb P^n)^r$.
 
 ### Ideal
 
