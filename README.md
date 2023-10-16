@@ -16,6 +16,16 @@ If $X\subset\mathbb P^m$ is parametrized by the rational map $f:\mathbb P^n\dash
 
 If $X\subset\mathbb P^n$ has ideal $I$, then `terraciniLocus(2, I)` will give the ideal of the preimage of the 2nd Terracini locus of $X$ in $\mathbb P^n\times\mathbb P^n$.
 
+## Installation
+
+To install this package, download the file [`TerraciniLoci.m2`](https://github.com/d-torrance/terracini-loci/raw/master/TerraciniLoci.m2) to some local directory, say `~/Downloads`.
+
+Then run the following in Macaulay2:
+
+```m2
+installPackage("TerraciniLoci", FileName => "~/Downloads/TerraciniLoci.m2")
+```
+
 ## Examples
 
 ### Curves
