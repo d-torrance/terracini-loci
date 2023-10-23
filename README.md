@@ -8,7 +8,7 @@ P. Santarsiero, D. Torrance, and E. Turatti.
 
 This package contains a method `terraciniLocus` with two installed method functions.
 
-### Parameterization
+### Parametrization
 
 If $X\subset\mathbb P^m$ is parametrized by the rational map $f:\mathbb P^n\dashrightarrow\mathbb P^m$ (represented in Macaulay2 by a ring map from the coordinate ring of $\mathbb P^m$ to the coordinate ring of $\mathbb P^n$) then `terraciniLocus(r, f)` will give the ideal of the preimage of the $`r`$th Terracini locus of $X$ in $(\mathbb P^n)^r$.
 
