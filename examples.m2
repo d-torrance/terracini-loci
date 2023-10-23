@@ -97,21 +97,21 @@ delPezzoSurface = t -> (
     map(R, S, super basis(3, P)))
 
 -- Corollary 5.5
-assertCorollary55 = t -> (
-    I := elapsedTime terraciniLocus(2, delPezzoSurface t);
-    comps := primaryDecomposition I;
-    assert(#comps == (if t == 4 then 5 else t) and
-	all(comps, J -> dim J - 2 == 3)))
+elapsedTime apply(primaryDecomposition terraciniLocus(2, delPezzoSurface 1),
+    I -> dim I - 2)
 
-assertCorollary55 1
-assertCorollary55 2
-assertCorollary55 3
-assertCorollary55 4
+elapsedTime apply(primaryDecomposition terraciniLocus(2, delPezzoSurface 2),
+    I -> dim I - 2)
+
+elapsedTime apply(primaryDecomposition terraciniLocus(2, delPezzoSurface 3),
+    I -> dim I - 2)
+
+elapsedTime apply(primaryDecomposition terraciniLocus(2, delPezzoSurface 4),
+    I -> dim I - 2)
 
 -- Corollary 5.7
-I = elapsedTime terraciniLocus(3, delPezzoSurface 1);
-comps = primaryDecomposition I;
-assert(#comps == 4 and all(comps, J -> dim J - 3 == 5))
+elapsedTime apply(primaryDecomposition terraciniLocus(3, delPezzoSurface 1),
+    I -> dim I - 3)
 
 ------------------------
 -- Veronese varieties --

@@ -252,9 +252,7 @@ o10 : Ideal of kk[z   ..z   ]
 
 ### del Pezzo surfaces
 
-#### 2nd Terracini loci of del Pezzo surfaces (Corollary 5.5)
-
-The 2nd Terracini locus of the blowup of $t$ points in $\mathbb P^2$ has $t$ 3-dimensional irreducible components when $`t\in\{1,2,3\}`$ and five 3-dimensional irreducible components when $t = 4$.
+Most del Pezzo surfaces are blowups of $t$ points in $\mathbb P^2$.  We embed them in $\mathbb P^{9-t}$ via the linear system of cubics that vanish on these $t$ points.  Since we are only interested in $t\leq 4$, we will assume the set of blowup points is a subset of \$\{z_1,z_2,z_3,z_4\}$, where $z_1=[0:0:1]$, $z_2=[0:1:0]$, $z_3=[1:0:0]$, and $z_4=[1:1:1]$.
 
 ```m2
 i1 : delPezzoSurface = t -> (
@@ -271,29 +269,44 @@ i1 : delPezzoSurface = t -> (
 o1 = delPezzoSurface
 
 o1 : FunctionClosure
+```
 
-i2 : -- Corollary 5.5
-assertCorollary55 = t -> (
-    I := elapsedTime terraciniLocus(2, delPezzoSurface t);
-    comps := primaryDecomposition I;
-    assert(#comps == (if t == 4 then 5 else t) and
-	all(comps, J -> dim J - 2 == 3)))
+#### 2nd Terracini loci of del Pezzo surfaces (Corollary 5.5)
 
-o2 = assertCorollary55
+The 2nd Terracini locus of the blowup of $t$ points in $\mathbb P^2$ has $t$ 3-dimensional irreducible components when $`t\in\{1,2,3\}`$ and five 3-dimensional irreducible components when $t = 4$.
 
-o2 : FunctionClosure
+```m2
+i3 : elapsedTime apply(primaryDecomposition terraciniLocus(2, delPezzoSurface 1),
+         I -> dim I - 2)
+ -- 0.299992 seconds elapsed
 
-i3 : assertCorollary55 1
- -- 0.557642 seconds elapsed
+o3 = {3}
 
-i4 : assertCorollary55 2
- -- 0.443816 seconds elapsed
+o3 : List
 
-i5 : assertCorollary55 3
- -- 0.512567 seconds elapsed
+i4 : elapsedTime apply(primaryDecomposition terraciniLocus(2, delPezzoSurface 2),
+         I -> dim I - 2)
+ -- 0.303849 seconds elapsed
 
-i6 : assertCorollary55 4
- -- 0.711542 seconds elapsed
+o4 = {3, 3}
+
+o4 : List
+
+i5 : elapsedTime apply(primaryDecomposition terraciniLocus(2, delPezzoSurface 3),
+         I -> dim I - 2)
+ -- 0.330507 seconds elapsed
+
+o5 = {3, 3, 3}
+
+o5 : List
+
+i6 : elapsedTime apply(primaryDecomposition terraciniLocus(2, delPezzoSurface 4),
+         I -> dim I - 2)
+ -- 0.649615 seconds elapsed
+
+o6 = {3, 3, 3, 3, 3}
+
+o6 : List
 ```
 
 #### 3rd Terracini locus of a del Pezzo surface (Corollary 5.7)
@@ -301,17 +314,11 @@ i6 : assertCorollary55 4
 The 3rd Terracini locus of the blowup of a single point in $\mathbb P^2$ has four 5-dimensional irreducible components.
 
 ```m2
-i7 : -- Corollary 5.7
-I = elapsedTime terraciniLocus(3, delPezzoSurface 1);
- -- 230.215 seconds elapsed
+i7 : elapsedTime apply(primaryDecomposition terraciniLocus(3, delPezzoSurface 1),
+         I -> dim I - 3)
+ -- 175.677 seconds elapsed
 
-                ZZ
-o7 : Ideal of -----[z   ..z   ]
-              32003  0,0   2,2
-
-i8 : comps = primaryDecomposition I;
-
-i9 : assert(#comps == 4 and all(comps, J -> dim J - 3 == 5))
+o7 = {5, 5, 5, 5}
 ```
 
 ### Veronese varieties
