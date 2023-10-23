@@ -252,7 +252,7 @@ o10 : Ideal of kk[z   ..z   ]
 
 ### del Pezzo surfaces
 
-Most del Pezzo surfaces are blowups of $t$ points in $\mathbb P^2$.  We embed them in $\mathbb P^{9-t}$ via the linear system of cubics that vanish on these $t$ points.  Since we are only interested in $t\leq 4$, we will assume the set of blowup points is a subset of \$\{z_1,z_2,z_3,z_4\}$, where $z_1=[0:0:1]$, $z_2=[0:1:0]$, $z_3=[1:0:0]$, and $z_4=[1:1:1]$.
+Most del Pezzo surfaces are blowups of $t$ points in $\mathbb P^2$.  We embed them in $\mathbb P^{9-t}$ via the linear system of cubics that vanish on these $t$ points.  Since we are only interested in $t\leq 4$, we will assume the set of blowup points is a subset of $`\{[0:0:1], [0:1:0], [1:0:0], [1:1:1]\}`$.
 
 ```m2
 i1 : delPezzoSurface = t -> (
