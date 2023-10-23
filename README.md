@@ -275,6 +275,8 @@ o1 : FunctionClosure
 
 The 2nd Terracini locus of the blowup of $t$ points in $\mathbb P^2$ has $t$ 3-dimensional irreducible components when $`t\in\{1,2,3\}`$ and five 3-dimensional irreducible components when $t = 4$.
 
+The blowup of a single point has an additional 2-dimensional component, the set of pairs of points on the exceptional divisor, but this component disappears when pulling back to the plane, so it is missing when using the parametrization code.
+
 ```m2
 i3 : elapsedTime apply(primaryDecomposition terraciniLocus(2, delPezzoSurface 1),
          I -> dim I - 2)
