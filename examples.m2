@@ -109,6 +109,15 @@ elapsedTime apply(primaryDecomposition terraciniLocus(2, delPezzoSurface 3),
 elapsedTime apply(primaryDecomposition terraciniLocus(2, delPezzoSurface 4),
     I -> dim I - 2)
 
+-- check using ideal method
+-- t = 1,2 run out of memory (too many heap sections)
+
+elapsedTime apply(primaryDecomposition terraciniLocus(2, ker delPezzoSurface 3),
+    I -> dim I - 2)
+
+elapsedTime apply(primaryDecomposition terraciniLocus(2, ker delPezzoSurface 4),
+    I -> dim I - 2)
+
 -- Corollary 5.7
 elapsedTime apply(primaryDecomposition terraciniLocus(3, delPezzoSurface 1),
     I -> dim I - 3)
