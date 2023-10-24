@@ -311,7 +311,7 @@ o6 = {3, 3, 3, 3, 3}
 o6 : List
 ```
 
-We check our work using the ideal method.  It takes considerably longer, and the computer ran out of memory computing the cases with $`t\in\{1,2\}`$.
+We check our work using the ideal method.  It takes considerably longer, and the computer may run out of memory computing the cases with $`t\in\{1,2\}`$.
 
 ```m2
 i2 : elapsedTime apply(primaryDecomposition terraciniLocus(2, ker delPezzoSurface 3),
