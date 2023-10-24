@@ -137,7 +137,7 @@ i11 : assertEmptyTerracini(2, I)
 
 ####  Rational octic in projective 7-space (Corollary 4.3)
 
-The bound from this result is not sharp.  Indeed, it only guarantees that the 2nd Terracini locus of this curve is empty, but we see below that the 3rd Terracini locus is empty as well.
+The bound from this result is not sharp.  Indeed, since $3r < 7 + 2$ implies $r\leq 2$, it only guarantees that the 2nd Terracini locus of this curve is empty, but we see below that the 3rd Terracini locus is empty as well.
 
 ```m2
 i3 : kk = ZZ/32003;
