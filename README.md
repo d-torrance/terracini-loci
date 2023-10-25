@@ -9,7 +9,7 @@ system [Macaulay2](https://macaulay2.com).
 
 An important tool in the study of secant varieties is *Terracini's lemma*.  In particular, if $X\subset\mathbb P^N$ is a variety, then we can compute the dimension of its $`r`$th secant variety $\sigma_r(X)$ by picking $r$ general points $p_1,\ldots,p_r\in X$.  Then $\dim\sigma_r(X) = \dim\langle T_{p_1}X,\ldots,T_{p_r}X\rangle$.  If $2\leq r\leq\frac{N+1}{\dim X + 1}$, then we expect this dimension to be $r(\dim X + 1) - 1$.
 
-If $\sigma_r(X)$ has the expected dimension, then we may wonder if any sets $`\{p_1,\ldots,p_r\}`$ exist for which the span of the tangent spaces has a smaller dimension.  The Zariski closure of the set of all such sets, as a subvariety of the $`r`$th symmetric power $X^{(r)}$, is the $`r`$th *Terracini locus* of $X$.
+If $\sigma_r(X)$ has the expected dimension, then we may wonder if any sets $`\{p_1,\ldots,p_r\}`$ of smooth points exist for which the span of the tangent spaces has a smaller dimension.  The Zariski closure of the set of all such sets, as a subvariety of the $`r`$th symmetric power $X^{(r)}$, is the $`r`$th *Terracini locus* of $X$.
 
 This Macaulay2 package contains a method `terraciniLocus` with two installed method functions.
 
