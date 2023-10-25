@@ -164,7 +164,7 @@ i8 : assertEmptyTerracini(3, f)
 
 #### Rational quintic in projective 4-space (Example 4.5)
 
-A counterexample to Proposition 4.4 in even-dimensional space, i.e., a curve with an empty last Terracini locus that is not the rational normal curve.
+According to Proposition 4.4, in odd-dimensional space, the only curves with empy last Terracini loci are rational normal curves.  We see that this is not true in even dimensional space.  For example, this rational quintic in $\mathbb P^4$ has empty 2nd Terracini locus.
 
 ```m2
 i3 : kk = ZZ/32003;
