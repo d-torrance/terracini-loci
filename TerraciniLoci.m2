@@ -65,6 +65,7 @@ terraciniLocus(ZZ, Matrix, Ideal) := o -> (r, A, I) -> (
     Q := productOfProjectiveSpaces(toList(r : n),
 	CoefficientField => coefficientRing R,
 	VariableName => "z");
+    if r == 1 then return ideal 1_Q;
     opts := apply(r, i -> apply(n + 1, j -> R_j => Q_((n + 1) * i + j)));
     Az := concatRows apply(r, i -> sub(A, opts#i));
     Ir := ideal apply(r, i -> sub(I, opts#i));
