@@ -55,6 +55,7 @@ exportFrom(FastMinors, {"Threads"})
 terraciniLocus = method(Options => {Threads => 0})
 
 terraciniLocus(ZZ, Matrix, Ideal) := o -> (r, A, I) -> (
+    if r < 1 then error "expected positive integer";
     if ring A =!= ring I then error "expected rings to agree";
     R := ring A;
     s := numRows A;
