@@ -371,17 +371,14 @@ i3 : assertEmptyTerracini(2, veronese(2, 3))
 
 #### 3rd Terracini locus of the Veronese cubic surface (Theorem 6.4)
 
-When $r = \left\lceil\frac{d+2}{2}\right\rceil$, the $`r`$th Terracini locus of $V_n^d$ is irreducible of dimension $2n + r - 2$.
+When $r = \left\lceil\frac{d+2}{2}\right\rceil$, the $`r`$th Terracini locus of $V_n^d$ is irreducible of dimension $2n + r - 2$.  So for example, the 3rd Terracini locus of the Veronese cubic surface has dimension $2\cdot 2 + 3 - 2 = 5$.
 
 ```m2
 
-i4 : I = elapsedTime terraciniLocus(3, veronese(2, 3));
- -- 617.377 seconds elapsed
+i3 : elapsedTime dim terraciniLocus(3, veronese(2, 3)) - 3
+ -- 631.742 seconds elapsed
 
-o4 : Ideal of QQ[z   ..z   ]
-                  0,0   2,2
-
-i5 : assert(#primaryDecomposition I == 1 and dim I - 3 == 2 * 2 + 3 - 2)
+o3 = 5
 ```
 
 ## Segre-Veronese varieties
@@ -390,10 +387,10 @@ i5 : assert(#primaryDecomposition I == 1 and dim I - 3 == 2 * 2 + 3 - 2)
 
 If $`r = \left\lceil\frac{d_1+2}{2}\right\rceil`$ and $`\hat\jmath=\max\left\{i\in\{1,\ldots,k\}:\left\lceil\frac{d_i+2}{2}\right\rceil=r\right\}`$, then the $`r`$th Terracini locus of the Segre-Veronese embedding of $`\mathbb P^{n_1}\times\cdots\times\mathbb P^{n_k}`$ via $`\mathcal O(d_1,\ldots,d_k)`$ has $`\hat\jmath`$ components of dimension $`n_1+\dots+n_k+n_i + r - 2`$.
 
-We demonstrate this for some Segre-Veronese surfaces, and in particular, for $`\mathbb P^1\times\mathbb P^1`$ embedded via $`\mathcal O(1, 2)`$, $`\mathcal O(1, 3)`$, and $`\mathcal O(2, 2)`$.  The latter is the del Pezzo surface mentioned at the beginning of Section 5.
+We demonstrate this for some Segre-Veronese surfaces, and in particular, for $`\mathbb P^1\times\mathbb P^1`$ embedded via $`\mathcal O(1, 2)`$, $`\mathcal O(1, 3)`$, and $`\mathcal O(2, 2)`$.  The latter is the del Pezzo surface mentioned at the beginning of Section 5.  These cases have $`\hat\jmath = 2`$, $`\hat\jmath=1`$, and $`\hat\jmath=2`$, respectively, and all have dimension $1 + 1 + 1 + 2 - 2 = 3$.
 
 ```m2
-i2 : segreVeronese = (n, d) -> (
+i1 : segreVeronese = (n, d) -> (
     x := symbol x;
     r := #n;
     R := QQ new Array from splice apply(r, i -> x_(i, 0)..x_(i, n#i));
@@ -403,31 +400,37 @@ i2 : segreVeronese = (n, d) -> (
 		vector apply(subsets(n#i + d#i, d#i), A -> product(d#i, j ->
 			x_(i, A#j - j)))))))
 
+o1 = segreVeronese
 
-o2 = segreVeronese
+o1 : FunctionClosure
 
-o2 : FunctionClosure
+i2 : elapsedTime apply(
+    primaryDecomposition terraciniLocus(2, segreVeronese({1, 1}, {1, 2})),
+    I -> dim I - 4)
 
-i3 : assertTheorem76 = (n, d) -> (
-    r := ceiling((d#0 + 2)/2);
-    I := elapsedTime terraciniLocus(r, segreVeronese(n, d));
-    jHat := max select(#d, i -> ceiling((d#i + 2)/2) == r) + 1;
-    comps := primaryDecomposition I;
-    assert(#comps == jHat);
-    assert(sort apply(comps, J -> dim J - 2 - r) ==
-	sort apply (jHat, i -> sum n + n#i + r - 2)))
+                -- 0.538814 seconds elapsed
 
+o2 = {3, 3}
 
-o3 = assertTheorem76
+o2 : List
 
-o3 : FunctionClosure
+i3 : elapsedTime apply(
+    primaryDecomposition terraciniLocus(2, segreVeronese({1, 1}, {1, 3})),
+    I -> dim I - 4)
 
-i4 : assertTheorem76({1, 1}, {1, 2})
- -- 0.590006 seconds elapsed
+                -- 4.37976 seconds elapsed
 
-i5 : assertTheorem76({1, 1}, {1, 3})
- -- 3.76348 seconds elapsed
+o3 = {3}
 
-i6 : assertTheorem76({1, 1}, {2, 2})
- -- 11.7846 seconds elapsed
+o3 : List
+
+i4 : elapsedTime apply(
+    primaryDecomposition terraciniLocus(2, segreVeronese({1, 1}, {2, 2})),
+    I -> dim I - 4)
+
+                -- 15.2653 seconds elapsed
+
+o4 = {3, 3}
+
+o4 : List
 ```

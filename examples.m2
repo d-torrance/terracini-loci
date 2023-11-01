@@ -129,8 +129,8 @@ elapsedTime apply(primaryDecomposition terraciniLocus(3, delPezzoSurface 1),
 needsPackage "Resultants"
 
 assertEmptyTerracini(2, veronese(2, 3))
-I = elapsedTime terraciniLocus(3, veronese(2, 3));
-assert(#primaryDecomposition I == 1 and dim I - 3 == 2 * 2 + 3 - 2)
+
+elapsedTime dim terraciniLocus(3, veronese(2, 3)) - 3
 
 ------------------------------
 -- Segre-Veronese varieties --
@@ -146,15 +146,14 @@ segreVeronese = (n, d) -> (
 		vector apply(subsets(n#i + d#i, d#i), A -> product(d#i, j ->
 			x_(i, A#j - j)))))))
 
-assertTheorem76 = (n, d) -> (
-    r := ceiling((d#0 + 2)/2);
-    I := elapsedTime terraciniLocus(r, segreVeronese(n, d));
-    jHat := max select(#d, i -> ceiling((d#i + 2)/2) == r) + 1;
-    comps := primaryDecomposition I;
-    assert(#comps == jHat);
-    assert(sort apply(comps, J -> dim J - 2 - r) ==
-	sort apply (jHat, i -> sum n + n#i + r - 2)))
+elapsedTime apply(
+    primaryDecomposition terraciniLocus(2, segreVeronese({1, 1}, {1, 2})),
+    I -> dim I - 4)
 
-assertTheorem76({1, 1}, {1, 2})
-assertTheorem76({1, 1}, {1, 3})
-assertTheorem76({1, 1}, {2, 2})
+elapsedTime apply(
+    primaryDecomposition terraciniLocus(2, segreVeronese({1, 1}, {1, 3})),
+    I -> dim I - 4)
+
+elapsedTime apply(
+    primaryDecomposition terraciniLocus(2, segreVeronese({1, 1}, {2, 2})),
+    I -> dim I - 4)
