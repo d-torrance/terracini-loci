@@ -350,7 +350,7 @@ o7 = {5, 5, 5, 5}
 
 ### Veronese varieties
 
-#### 2nd Terracini locus of the Veronese cubic surface (Proposition 6.1)
+#### 2nd Terracini locus of the Veronese cubic surface ([Laface-Massarenti Theorem 1.1](https://arxiv.org/abs/2304.07276))
 
 When $2r < d + 2$, the $`r`$th Terracini locus of $V_n^d$ is empty.
 
@@ -369,7 +369,7 @@ i3 : assertEmptyTerracini(2, veronese(2, 3))
  -- 0.730559 seconds elapsed
 ```
 
-#### 3rd Terracini locus of the Veronese cubic surface (Theorem 6.4)
+#### 3rd Terracini locus of the Veronese cubic surface (Theorem 6.6)
 
 When $r = \left\lceil\frac{d+2}{2}\right\rceil$, the $`r`$th Terracini locus of $V_n^d$ is irreducible of dimension $2n + r - 2$.  So for example, the 3rd Terracini locus of the Veronese cubic surface has dimension $2\cdot 2 + 3 - 2 = 5$.
 
@@ -383,11 +383,11 @@ o3 = 5
 
 ## Segre-Veronese varieties
 
-### Segre-Veronese surfaces (Theorem 7.6)
+### Segre-Veronese surfaces (Theorem 7.10)
 
-If $`r = \left\lceil\frac{d_1+2}{2}\right\rceil`$ and $`\hat\jmath=\max\left\{i\in\{1,\ldots,k\}:\left\lceil\frac{d_i+2}{2}\right\rceil=r\right\}`$, then the $`r`$th Terracini locus of the Segre-Veronese embedding of $`\mathbb P^{n_1}\times\cdots\times\mathbb P^{n_k}`$ via $`\mathcal O(d_1,\ldots,d_k)`$ has $`\hat\jmath`$ components of dimension $`n_1+\dots+n_k+n_i + r - 2`$.
+If $`r = \min\left\{\ru{\frac{d_i+2}{2}}\middle| i\in\{1,\ldots,k\}\right\}`$ and $`J = \left\{i\in\{1,\ldots,k\}\middle|\ru{\frac{d_i+2}{2}}= r\right\}`$, then the $`r`$th Terracini locus of the Segre-Veronese embedding of $`\mathbb P^{n_1}\times\cdots\times\mathbb P^{n_k}`$ via $`\mathcal O(d_1,\ldots,d_k)`$ has an irreducible component of dimension $`n_1+\dots+n_k+n_i + r - 2`$ for each $i\in J$.
 
-We demonstrate this for some Segre-Veronese surfaces, and in particular, for $`\mathbb P^1\times\mathbb P^1`$ embedded via $`\mathcal O(1, 2)`$, $`\mathcal O(1, 3)`$, and $`\mathcal O(2, 2)`$.  The latter is the del Pezzo surface mentioned at the beginning of Section 5.  These cases have $`\hat\jmath = 2`$, $`\hat\jmath=1`$, and $`\hat\jmath=2`$, respectively, and all have dimension $1 + 1 + 1 + 2 - 2 = 3$.
+We demonstrate this for some Segre-Veronese surfaces, and in particular, for $`\mathbb P^1\times\mathbb P^1`$ embedded via $`\mathcal O(1, 2)`$, $`\mathcal O(1, 3)`$, and $`\mathcal O(2, 2)`$.  The latter is the del Pezzo surface mentioned at the beginning of Section 5.  These cases have $`J=\{1, 2\}`$, $`J=\{1\}`$, and $`J=\{1,2\}`$, respectively, and all have dimension $1 + 1 + 1 + 2 - 2 = 3$.
 
 ```m2
 i1 : segreVeronese = (n, d) -> (
