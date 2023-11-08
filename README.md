@@ -385,7 +385,7 @@ o3 = 5
 
 ### Segre-Veronese surfaces (Theorem 7.10)
 
-If $`r = \min\left\{\ru{\frac{d_i+2}{2}}\middle| i\in\{1,\ldots,k\}\right\}`$ and $`J = \left\{i\in\{1,\ldots,k\}\middle|\ru{\frac{d_i+2}{2}}= r\right\}`$, then the $`r`$th Terracini locus of the Segre-Veronese embedding of $`\mathbb P^{n_1}\times\cdots\times\mathbb P^{n_k}`$ via $`\mathcal O(d_1,\ldots,d_k)`$ has an irreducible component of dimension $`n_1+\dots+n_k+n_i + r - 2`$ for each $i\in J$.
+If $`r = \min\left\{\left\lceil\frac{d_i+2}{2}\right\rceil\middle| i\in\{1,\ldots,k\}\right\}`$ and $`J = \left\{i\in\{1,\ldots,k\}\middle|\left\lceil\frac{d_i+2}{2}\right\rceil= r\right\}`$, then the $`r`$th Terracini locus of the Segre-Veronese embedding of $`\mathbb P^{n_1}\times\cdots\times\mathbb P^{n_k}`$ via $`\mathcal O(d_1,\ldots,d_k)`$ has an irreducible component of dimension $`n_1+\dots+n_k+n_i + r - 2`$ for each $i\in J$.
 
 We demonstrate this for some Segre-Veronese surfaces, and in particular, for $`\mathbb P^1\times\mathbb P^1`$ embedded via $`\mathcal O(1, 2)`$, $`\mathcal O(1, 3)`$, and $`\mathcal O(2, 2)`$.  The latter is the del Pezzo surface mentioned at the beginning of Section 5.  These cases have $`J=\{1, 2\}`$, $`J=\{1\}`$, and $`J=\{1,2\}`$, respectively, and all have dimension $1 + 1 + 1 + 2 - 2 = 3$.
 
