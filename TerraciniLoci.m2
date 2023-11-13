@@ -128,7 +128,44 @@ doc ///
     :Ideal
   Description
     Text
-      TODO
+      There are two methods to compute the Terracini locus of a
+      projective variety.
+
+      First, consider a rational variety parametrized by a polynomial
+      map $f:\mathbb P^n\dashrightarrow\mathbb P^m$.  In Macaulay2,
+      this may be represented using a @TO RingMap@ object from the
+      coordinate ring of $\mathbb P^m$ to the coordinate ring of
+      $\mathbb P^n$.  We consider the twisted cubic in $\mathbb P^3$.
+    Example
+      R = QQ[s,t]
+      S = QQ[x_0..x_3]
+      f = map(R, S, {s^3, s^2*t, s*t^2, t^3})
+    Text
+      In this case, the ideal of the preimage of the Terracini locus
+      in $(\mathbb P^n)^r$ is returned.  So in our twisted cubic
+      example, if $r=2$, then we get the ideal of the pairs of points
+      in $\mathbb P^1\times\mathbb P^1$ whose images under $f$ belong
+      to the 2nd Terracini locus.
+    Example
+      terraciniLocus(2, f)
+    Text
+      We see that the Terracini locus is empty, which is true for all
+      rational normal curves.
+
+      We may also consider varieties in $\mathbb P^n$ defined by an
+      ideal.  Let us continue with the twisted cubic example.
+    Example
+      I = ker f
+    Text
+      In this case, we may only use $r=2$.  The ideal of the pairs of
+      points in $\mathbb P^n\times\mathbb P^n$ belonging to the
+      Terracini locus is returned.  So for the twisted cubic, we get
+      an ideal in the coordinate ring of $\mathbb P^3\times\mathbb P^3$.
+    Example
+      terraciniLocus(2, I)
+    Text
+      For more examples, see
+      @HREF "https://github.com/d-torrance/terracini-loci"@.
 ///
 
 -----------
