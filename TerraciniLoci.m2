@@ -113,6 +113,7 @@ doc ///
     (terraciniLocus, ZZ, Matrix, Ideal)
     (terraciniLocus, ZZ, RingMap)
     (terraciniLocus, ZZ, Ideal)
+    [terraciniLocus, Threads]
   Headline
     compute the Terracini locus of a projective variety
   Usage
@@ -120,6 +121,9 @@ doc ///
   Inputs
     r:ZZ
     X:{RingMap,Ideal}
+    Threads => ZZ
+      the number of threads used during the computation.  This option
+      is passed to @TO "FastMinors::recursiveMinors"@.
   Outputs
     :Ideal
   Description
