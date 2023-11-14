@@ -176,7 +176,7 @@ doc ///
 TEST ///
 -- rational normal curves
 needsPackage "Resultants"
-assertEmptyTerracini = (r, f) -> assert(terraciniLocus(r, f) == 1)
+assertEmptyTerracini = (r, f) -> assert Equation(terraciniLocus(r, f), 1)
 
 -- ring map
 assertEmptyTerracini(2, veronese(1, 3))
@@ -186,7 +186,7 @@ assertEmptyTerracini(2, veronese(1, 4))
 assertEmptyTerracini(2, ker veronese(1, 3))
 
 -- also check Threads option
-assert(terraciniLocus(2, veronese(1, 3), Threads => 2) == 1)
+assert Equation(terraciniLocus(2, veronese(1, 3), Threads => 2), 1)
 ///
 
 TEST ///
@@ -202,24 +202,25 @@ delPezzoSurface = t -> (
 	}_{0..t - 1};
     map(R, S, super basis(3, P)))
 
-assertCorollary55 = t -> (
-    I := terraciniLocus(2, delPezzoSurface t);
-    comps := primaryDecomposition I;
-    assert(#comps == (if t == 4 then 5 else t) and
-	all(comps, J -> dim J - 2 == 3)))
-
-assertCorollary55 1
-assertCorollary55 2
-assertCorollary55 3
-assertCorollary55 4
+assert Equation(
+    apply(primaryDecomposition terraciniLocus(2, delPezzoSurface 1),
+	I -> dim I - 2), {3})
+assert Equation(
+    apply(primaryDecomposition terraciniLocus(2, delPezzoSurface 2),
+	I -> dim I - 2), {3, 3})
+assert Equation(
+    apply(primaryDecomposition terraciniLocus(2, delPezzoSurface 3),
+	I -> dim I - 2), {3, 3, 3})
+assert Equation(
+    apply(primaryDecomposition terraciniLocus(2, delPezzoSurface 4),
+	I -> dim I - 2), {3, 3, 3, 3, 3})
 ///
 
 TEST ///
 -- veronese
 needsPackage "Resultants"
-assertEmptyTerracini = (r, f) -> assert(terraciniLocus(r, f) == 1)
 
-assertEmptyTerracini(2, veronese(2, 3))
+assert Equation(terraciniLocus(2, veronese(2, 3)), 1)
 ///
 
 TEST ///
@@ -235,14 +236,8 @@ segreVeronese = (n, d) -> (
 		vector apply(subsets(n#i + d#i, d#i), A -> product(d#i, j ->
 			x_(i, A#j - j)))))))
 
-assertTheorem76 = (n, d) -> (
-    r := ceiling((d#0 + 2)/2);
-    I := terraciniLocus(r, segreVeronese(n, d));
-    jHat := max select(#d, i -> ceiling((d#i + 2)/2) == r) + 1;
-    comps := primaryDecomposition I;
-    assert(#comps == jHat);
-    assert(sort apply(comps, J -> dim J - 2 - r) ==
-	sort apply (jHat, i -> sum n + n#i + r - 2)))
-
-assertTheorem76({1, 1}, {1, 2})
+assert Equation(
+    apply(
+	primaryDecomposition terraciniLocus(2, segreVeronese({1, 1}, {1, 2})),
+	I -> dim I - 4), {3, 3})
 ///
