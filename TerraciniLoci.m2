@@ -99,7 +99,7 @@ doc ///
 
       The Terracini locus of projective variety $X$ is a subvariety of
       the symmetric power $X^{(r)}$ containing the closure of all
-      sets $\{p_1,\ldots,p_r\}$ of points in $X$ for which the space
+      sets $\{p_1,\ldots,p_r\}$ of smooth points in $X$ for which the space
       $\langle T_{p_1}X,\ldots,T_{p_r}X\rangle$ has less than the expected
       dimension.
 
