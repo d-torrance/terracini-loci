@@ -94,8 +94,8 @@ doc ///
   Description
     Text
       This package implements the algorithms from Section 8 of the
-      paper "Geometry of first nonempty Terracini loci" by F. Galuppi,
-      P. Santarsiero, D. Torrance, and E. Turatti.
+      paper @arXiv("2311.09067", "Geometry of first nonempty Terracini loci")@
+      by F. Galuppi, P. Santarsiero, D. Torrance, and E. Turatti.
 
       The Terracini locus of projective variety $X$ is a subvariety of
       the symmetric power $X^{(r)}$ containing the closure of all
