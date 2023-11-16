@@ -1,7 +1,7 @@
 # TerraciniLoci package for Macaulay2
 
 This package implements the algorithms from Section 8 of the paper
-*Geometry of first nonempty Terracini loci* by F. Galuppi,
+[*Geometry of first nonempty Terracini loci*](https://arxiv.org/abs/2311.09067) by F. Galuppi,
 P. Santarsiero, D. Torrance, and E. Turatti in the computer algebra
 system [Macaulay2](https://macaulay2.com).
 
