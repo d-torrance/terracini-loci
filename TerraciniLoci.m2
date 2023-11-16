@@ -19,6 +19,15 @@
 -- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 -- 02110-1301, USA.
 
+--
+
+-- This work is partially supported by the Thematic Research Programme
+-- "Tensors: geometry, complexity and quantum entanglement", University
+-- of Warsaw, Excellence Initiative – Research University and the Simons
+-- Foundation Award No. 663281 granted to the Institute of Mathematics of
+-- the Polish Academy of Sciences for the years 2021-2023. Work was begun
+-- during the "Geometry of secants" workshop during AGATES
+-- (https://agates.mimuw.edu.pl/).
 
 newPackage("TerraciniLoci",
     Headline => "Terracini loci of projective varieties",
