@@ -63,7 +63,7 @@ newPackage("TerraciniLoci",
 0.2 (2024-10-19, M2 1.24.11)
 * stop exporting "Threads" symbol from FastMinors; now exported by Core
 
-0.1 (2023-11-16, M2.123)
+0.1 (2023-11-16, M2 1.23)
 * initial release
 
 *-
