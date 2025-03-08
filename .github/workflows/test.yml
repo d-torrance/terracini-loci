@@ -14,7 +14,7 @@ jobs:
       - name: Test TerraciniLoci package
         run: M2 -q --stop -e 'check needsPackage "TerraciniLoci"; exit 0'
       - name: Check that we are in sync with M2 repo
-        run:
+        run: |
           mkdir tmp
           wget -P https://github.com/Macaulay2/M2/blob/development/M2/Macaulay2/packages/TerraciniLoci.m2
           diff -u TerraciniLoci.m2 tmp/TerraciniLoci.m2
