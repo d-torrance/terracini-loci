@@ -8,7 +8,7 @@ jobs:
       - name: Check that we are in sync with M2 repo
         run: |
           mkdir tmp
-          wget -P tmp https://github.com/Macaulay2/M2/blob/development/M2/Macaulay2/packages/TerraciniLoci.m2
+          wget -P tmp https://raw.githubusercontent.com/Macaulay2/M2/refs/heads/development/M2/Macaulay2/packages/TerraciniLoci.m2
           diff -u TerraciniLoci.m2 tmp/TerraciniLoci.m2
       - name: Install Macaulay2
         run: |
