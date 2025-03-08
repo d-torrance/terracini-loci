@@ -29,14 +29,6 @@ This package has been included with Macaulay2 since version 1.23.  You may load 
 needsPackage "TerraciniLoci"
 ```
 
-To install this package on an older version of Macaulay2, download the file [`TerraciniLoci.m2`](https://github.com/d-torrance/terracini-loci/raw/master/TerraciniLoci.m2) to some local directory, say `~/Downloads`.
-
-Then run the following in Macaulay2:
-
-```m2
-installPackage("TerraciniLoci", FileName => "~/Downloads/TerraciniLoci.m2")
-```
-
 ## Examples
 
 ### Curves
