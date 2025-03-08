@@ -6,7 +6,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install Macaulay2
-        run: sudo apt-get install -y --no-install-recommends macaulay2
+        run: |
+          sudo add-apt-repository ppa:macaulay2/macaulay2
+          apt-get install -y --no-install-recommends macaulay2
       - name: Install TerraciniLoci package
         run: M2 -q --stop -e 'installPackage "TerraciniLoci"; exit 0'
       - name: Test TerraciniLoci package
