@@ -1,6 +1,7 @@
 name: test
 on:
-  push
+  push:
+    - branches: 'master'
   schedule:
     - cron: '0 12 15 * *'
 jobs:
