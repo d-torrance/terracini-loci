@@ -5,6 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Check that we are in sync with M2 repo
+        run: |
+          mkdir tmp
+          wget -P tmp https://github.com/Macaulay2/M2/blob/development/M2/Macaulay2/packages/TerraciniLoci.m2
+          diff -u TerraciniLoci.m2 tmp/TerraciniLoci.m2
       - name: Install Macaulay2
         run: |
           sudo add-apt-repository ppa:macaulay2/macaulay2
@@ -13,8 +18,3 @@ jobs:
         run: M2 -q --stop -e 'installPackage "TerraciniLoci"; exit 0'
       - name: Test TerraciniLoci package
         run: M2 -q --stop -e 'check needsPackage "TerraciniLoci"; exit 0'
-      - name: Check that we are in sync with M2 repo
-        run: |
-          mkdir tmp
-          wget -P https://github.com/Macaulay2/M2/blob/development/M2/Macaulay2/packages/TerraciniLoci.m2
-          diff -u TerraciniLoci.m2 tmp/TerraciniLoci.m2
