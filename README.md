@@ -3,7 +3,7 @@
 [![test](https://github.com/d-torrance/terracini-loci/actions/workflows/test.yml/badge.svg)](https://github.com/d-torrance/terracini-loci/actions/workflows/test.yml)
 
 This package implements the algorithms from Section 8 of the paper
-[*Geometry of first nonempty Terracini loci*](https://arxiv.org/abs/2311.09067) by F. Galuppi,
+[*Geometry of first nonempty Terracini loci*](https://doi.org/10.1142/S0219199725500531) by F. Galuppi,
 P. Santarsiero, D. Torrance, and E. Turatti in the computer algebra
 system [Macaulay2](https://macaulay2.com).
 
