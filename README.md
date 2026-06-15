@@ -7,6 +7,8 @@ This package implements the algorithms from Section 8 of the paper
 P. Santarsiero, D. Torrance, and E. Turatti in the computer algebra
 system [Macaulay2](https://macaulay2.com).
 
+See also the [package documentation](https://d-torrance.github.io/terracini-loci/).
+
 ## Description
 
 An important tool in the study of secant varieties is *Terracini's lemma*.  In particular, if $X\subset\mathbb P^N$ is a variety, then we can compute the dimension of its $`r`$th secant variety $\sigma_r(X)$ by picking $r$ general points $p_1,\ldots,p_r\in X$.  Then $\dim\sigma_r(X) = \dim\langle T_{p_1}X,\ldots,T_{p_r}X\rangle$.  If $2\leq r\leq\frac{N+1}{\dim X + 1}$, then we expect this dimension to be $r(\dim X + 1) - 1$.
